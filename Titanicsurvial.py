@@ -1,5 +1,6 @@
 import pandas as p
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import cross_val_score
 from sklearn import tree
 import math
 
@@ -33,6 +34,7 @@ print(independent_variable_1.head(5))
 median_Age = math.floor(independent_variable_1.Age.median())
 # print(median_Age)
 independent_variable_1.Age = independent_variable_1.Age.fillna(median_Age)
+print(cross_val_score(tree.DecisionTreeClassifier(max_features='sqrt') , independent_variable_1 , dependent_variable))
 
 id = int(input('Enter the PassengerId :'))
 pclass = int(input('Enter the PCLass :'))
@@ -46,7 +48,7 @@ cabin = int(input('Enter the Cabin :'))
 embarked = int(input('Enter the Embarked :'))
 
 inputs = [[id , pclass , sex , age , sibsp , parch , ticket , fare , cabin , embarked]]
-model = tree.DecisionTreeClassifier()
+model = tree.DecisionTreeClassifier(max_features='sqrt')
 fitting = model.fit(independent_variable_1 , dependent_variable)
 prediction = model.predict(inputs)
 
