@@ -29,7 +29,7 @@ independent_variable['Embarked_n'] = le_Embarked.fit_transform(independent_varia
 # print(independent_variable.head())
 
 independent_variable_1 = independent_variable.drop(['PassengerId' , 'Pclass' , 'Name' , 'Name_n', 'Sex' , 'Ticket' , 'Cabin' , 'Embarked'] , axis = 'columns')
-print(independent_variable_1.head(5))
+# print(independent_variable_1.head(5))
 
 median_Age = math.floor(independent_variable_1.Age.median())
 # print(median_Age)
